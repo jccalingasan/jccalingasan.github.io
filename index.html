@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Julio Cesar Calingasan — Engineer · AI Builder</title>
+<meta name="description" content="Portfolio of Julio Cesar M. Calingasan — Mechanical Engineer working with AI, automation, and physical systems." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  /* ---------- Tokens ---------- */
+  :root {
+    --bg: #f7f5f0;
+    --bg-soft: #efece5;
+    --ink: #181715;
+    --ink-soft: #5a5751;
+    --ink-mute: #8c887f;
+    --accent: #b85838;
+    --accent-soft: #c97a5e;
+    --line: rgba(24, 23, 21, 0.10);
+
+    --sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 245, 240, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-mark {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .nav-mark span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .nav-links a { transition: color 0.2s ease; }
+  .nav-links a:hover { color: var(--accent); }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 100px 0 80px;
+  }
+  .hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    margin-bottom: 36px;
+    background: var(--bg-soft);
+  }
+  .hero-status::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  .hero-name {
+    font-family: var(--sans);
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .hero-tagline {
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .hero-role {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.02em;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid var(--ink);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    background: transparent;
+    color: var(--ink);
+  }
+  .btn svg { width: 14px; height: 14px; }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+
+  /* ---------- Section base ---------- */
+  section { padding: 64px 0; }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-family: var(--sans);
+    font-size: clamp(28px, 3.6vw, 38px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 48px;
+    max-width: 700px;
+  }
+
+  /* ---------- About (with photo) ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { color: var(--ink); font-weight: 600; }
+
+  .about-photo {
+    position: relative;
+  }
+  .about-photo img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    /* ↓↓↓ ADJUST THIS LINE to reposition yourself in the frame ↓↓↓
+       First number = left/right (lower = move view left, higher = right)
+       Second number = up/down  (lower = show more sky above you,
+                                  higher = move the view down onto you) */
+    object-position: 50% 86%;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 12px 32px -16px rgba(24, 23, 21, 0.25);
+  }
+  .about-photo-caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-top: 12px;
+    letter-spacing: 0.04em;
+  }
+  @media (max-width: 760px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-photo { max-width: 280px; }
+  }
+
+  /* ---------- What I do ---------- */
+  .practice-list {
+    display: grid;
+    gap: 0;
+  }
+  .practice-item {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .practice-item:last-child { border-bottom: 1px solid var(--line); }
+  .practice-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+  .practice-name {
+    font-family: var(--sans);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .practice-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 600px;
+  }
+
+  /* ---------- Experience ---------- */
+  .exp-list {
+    display: grid;
+    gap: 0;
+  }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 32px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+    transition: opacity 0.3s ease;
+  }
+  .exp-item:last-child { border-bottom: 1px solid var(--line); }
+  .exp-list:hover .exp-item { opacity: 0.5; }
+  .exp-list:hover .exp-item:hover { opacity: 1; }
+  .exp-year {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.02em;
+  }
+  .exp-role {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .exp-org {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .exp-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    white-space: nowrap;
+  }
+  .exp-tag.current { color: var(--accent); }
+  @media (max-width: 640px) {
+    .exp-item { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
+  }
+
+  /* ---------- Projects ---------- */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .proj-card {
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+  }
+  .proj-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--line);
+    box-shadow: 0 8px 24px -12px rgba(24, 23, 21, 0.15);
+  }
+  .proj-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.005em;
+  }
+  .proj-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .proj-tags span {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    background: var(--bg);
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 640px) { .proj-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Toolbox ---------- */
+  .tool-list {
+    display: grid;
+    gap: 0;
+  }
+  .tool-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .tool-row:last-child { border-bottom: 1px solid var(--line); }
+  .tool-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .tool-items {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  @media (max-width: 640px) {
+    .tool-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  /* ---------- Education ---------- */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .edu-card {
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+  }
+  .edu-kind {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 12px;
+  }
+  .edu-title {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.005em;
+  }
+  .edu-meta {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .edu-list {
+    list-style: none;
+    display: grid;
+    gap: 6px;
+  }
+  .edu-list li {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    padding-left: 14px;
+    position: relative;
+  }
+  .edu-list li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  @media (max-width: 640px) { .edu-grid { grid-template-columns: 1fr; gap: 0; } }
+
+  /* ---------- Contact ---------- */
+  .contact {
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+    margin-top: 40px;
+  }
+  .contact-headline {
+    font-family: var(--sans);
+    font-size: clamp(28px, 3.6vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 32px;
+    max-width: 680px;
+  }
+  .contact-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .contact-block .lbl {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .contact-block a, .contact-block p {
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 500;
+    transition: color 0.2s ease;
+    word-break: break-word;
+  }
+  .contact-block a:hover { color: var(--accent); }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    padding: 32px 0 48px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  @media (max-width: 640px) {
+    .contact-links { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  /* ---------- Reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark">JC<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#practice">Practice</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-status">Available · Freelance</div>
+    <h1 class="hero-name">
+      Julio Cesar Calingasan
+    </h1>
+    <p class="hero-tagline">
+      Mechanical engineer working across AI, automation, and physical systems.
+    </p>
+    <p class="hero-role">Lucena City, Philippines</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="CV_Jc_Calingasan.pdf" download>
+        Download CV
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#contact">
+        Get in touch
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7m0 0H8m9 0v9"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT (with photo) -->
+<section id="about" class="reveal">
+  <div class="container">
+    <span class="section-label">About</span>
+    <h2 class="section-title">A short introduction.</h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a <strong>Mechanical Engineering</strong> graduate from Manuel S. Enverga University Foundation, currently freelancing as a workflow automation specialist — and, before that, an AI researcher and developer for a range of client projects.
+        </p>
+        <p>
+          My work tends to live at the seam between things: between hardware and software, between research notes and shippable systems, between a messy process and a clean automated one. I like the seams. That's where most of the interesting problems sit.
+        </p>
+        <p>
+          When I'm not on a client project, you'll usually find me building drones, testing AI agent workflows, or refining a CRM pipeline until it just feels right.
+        </p>
+      </div>
+
+      <div class="about-photo">
+        <img src="portrait.jpg" alt="Julio Cesar Calingasan by a lake" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section id="practice" class="reveal">
+  <div class="container">
+    <span class="section-label">Practice</span>
+    <h2 class="section-title">Three things I do, often together.</h2>
+
+    <div class="practice-list">
+      <div class="practice-item">
+        <div class="practice-num">01</div>
+        <div>
+          <h3 class="practice-name">Workflow Automation</h3>
+          <p class="practice-desc">CRM and work-management automations on Monday.com and ContactPoint — pipelines, statuses, automation rules, and the unglamorous data structures that hold it all together.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">02</div>
+        <div>
+          <h3 class="practice-name">AI &amp; Software</h3>
+          <p class="practice-desc">Building chatbot prototypes and AI agent workflows, model evaluation, prompt structuring, and clear technical reporting. Python is home base; C++ when I need to get closer to the hardware.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">03</div>
+        <div>
+          <h3 class="practice-name">Mechanical Engineering</h3>
+          <p class="practice-desc">Machine design, HVAC fundamentals, preventive maintenance, and basic diagnostics. Trained on industry shop floors and in academic labs — comfortable around real hardware.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="reveal">
+  <div class="container">
+    <span class="section-label">Experience</span>
+    <h2 class="section-title">A few chapters so far.</h2>
+
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-year">2026 — Now</div>
+        <div>
+          <div class="exp-role">VA &amp; Workflow Automation Specialist</div>
+          <div class="exp-org">Freelance</div>
+        </div>
+        <span class="exp-tag current">Current</span>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-year">2024 — 2026</div>
+        <div>
+          <div class="exp-role">AI Researcher &amp; Developer</div>
+          <div class="exp-org">Freelance</div>
+        </div>
+        <span class="exp-tag">Freelance</span>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-year">2023 — 2024</div>
+        <div>
+          <div class="exp-role">Student Assistant — Library (EMRC)</div>
+          <div class="exp-org">Manuel S. Enverga University Foundation</div>
+        </div>
+        <span class="exp-tag">University</span>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-year">Jul — Aug 2023</div>
+        <div>
+          <div class="exp-role">Mechanical Technician (OJT)</div>
+          <div class="exp-org">Isuzu Pagbilao · MBT Autoworx Corporation</div>
+        </div>
+        <span class="exp-tag">Internship</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="reveal">
+  <div class="container">
+    <span class="section-label">Selected Work</span>
+    <h2 class="section-title">Projects that taught me something.</h2>
+
+    <div class="proj-grid">
+      <article class="proj-card">
+        <h3 class="proj-title">AI Chatbot &amp; Agent Workflows</h3>
+        <p class="proj-desc">Built chatbot prototypes using structured prompting and iterative testing. Designed agent-based workflows to automate reporting, data processing, and multi-step task execution.</p>
+        <div class="proj-tags">
+          <span>Python</span><span>LLMs</span><span>Agents</span>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <h3 class="proj-title">Automated Water Sprinkler with Rail System</h3>
+        <p class="proj-desc">Undergraduate thesis. Rail-guided, Arduino-controlled irrigation for vegetable crops. Applied fluid mechanics and machine design; ran before/after field comparisons.</p>
+        <div class="proj-tags">
+          <span>Arduino</span><span>Machine Design</span><span>Field Testing</span>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <h3 class="proj-title">Drone Platform &amp; Detection System</h3>
+        <p class="proj-desc">Assembled a multirotor drone from scratch. Supported hardware integration, flight-readiness testing, and embedded-device setup for video and audio-based drone detection.</p>
+        <div class="proj-tags">
+          <span>UAV</span><span>Embedded</span><span>Hardware</span>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <h3 class="proj-title">Foundational Software Projects</h3>
+        <p class="proj-desc">Calculator and cashier-system builds during academic training. Core programming concepts, structured problem-solving, and debugging across Java, C++, and Python.</p>
+        <div class="proj-tags">
+          <span>Java</span><span>C++</span><span>Python</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLBOX -->
+<section id="toolbox" class="reveal">
+  <div class="container">
+    <span class="section-label">Toolbox</span>
+    <h2 class="section-title">Things I actually use.</h2>
+
+    <div class="tool-list">
+      <div class="tool-row">
+        <div class="tool-label">Mechanical</div>
+        <p class="tool-items">HVAC fundamentals, machine design, preventive maintenance, mechanical diagnostics, power-plant &amp; industrial systems</p>
+      </div>
+      <div class="tool-row">
+        <div class="tool-label">AI &amp; Software</div>
+        <p class="tool-items">Python, basic C++, AI model testing &amp; evaluation, chatbot prototyping, agent workflow design, prompt structuring</p>
+      </div>
+      <div class="tool-row">
+        <div class="tool-label">Workflow</div>
+        <p class="tool-items">Monday.com, ContactPoint, CRM automation rules, status pipelines, data management, reporting</p>
+      </div>
+      <div class="tool-row">
+        <div class="tool-label">Safety</div>
+        <p class="tool-items">BOSH training, Safety Officer 2, occupational health &amp; safety practices</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="reveal">
+  <div class="container">
+    <span class="section-label">Education &amp; Certs</span>
+    <h2 class="section-title">Where the foundations were laid.</h2>
+
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-kind">Degree</div>
+        <h3 class="edu-title">B.S. Mechanical Engineering</h3>
+        <p class="edu-meta">Manuel S. Enverga University Foundation · 2018—2024</p>
+        <ul class="edu-list">
+          <li>Thesis on rail-guided automated irrigation systems</li>
+          <li>Coursework in machine design, fluid mechanics, HVAC</li>
+          <li>Lab and shop-floor practice across mechanical disciplines</li>
+        </ul>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-kind">Certifications</div>
+        <h3 class="edu-title">Continued learning</h3>
+        <p class="edu-meta">Industry-recognized credentials</p>
+        <ul class="edu-list">
+          <li>Oracle Cloud Infrastructure 2025 — AI Foundations Associate</li>
+          <li>Safety Officer 2 — BOSH Training</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact reveal">
+  <div class="container">
+    <span class="section-label">Contact</span>
+    <h2 class="contact-headline">
+      Have a project that lives between hardware, AI, and workflows? Let's talk.
+    </h2>
+
+    <div class="contact-links">
+      <div class="contact-block">
+        <span class="lbl">Email</span>
+        <a href="mailto:calingasan2497@gmail.com">calingasan2497@gmail.com</a>
+      </div>
+      <div class="contact-block">
+        <span class="lbl">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/julio-cesar-calingasan-819575316" target="_blank" rel="noopener">/julio-cesar-calingasan</a>
+      </div>
+      <div class="contact-block">
+        <span class="lbl">Based in</span>
+        <p>Lucena City, Philippines</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <span>© 2026 Julio Cesar M. Calingasan</span>
+    <span>Designed &amp; coded with care</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
