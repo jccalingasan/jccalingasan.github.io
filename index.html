@@ -33,7 +33,7 @@
     background: var(--bg);
     color: var(--ink);
     font-family: var(--sans);
-    font-size: 16px;
+    font-size: 17.5px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -194,7 +194,7 @@
     align-items: start;
   }
   .about-text p {
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.7;
     color: var(--ink-soft);
     margin-bottom: 18px;
@@ -252,15 +252,15 @@
   }
   .practice-name {
     font-family: var(--sans);
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 500;
     color: var(--ink);
     margin-bottom: 8px;
     letter-spacing: -0.01em;
   }
   .practice-desc {
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--ink-soft);
     max-width: 600px;
   }
@@ -289,14 +289,14 @@
     letter-spacing: 0.02em;
   }
   .exp-role {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     color: var(--ink);
     margin-bottom: 4px;
     letter-spacing: -0.005em;
   }
   .exp-org {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--ink-soft);
   }
   .exp-tag {
@@ -312,53 +312,136 @@
     .exp-item { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
   }
 
-  /* ---------- Projects ---------- */
-  .proj-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+  /* ---------- Projects (accordion) ---------- */
+  .proj-hint {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: -32px;
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .proj-card {
-    padding: 28px;
-    background: var(--bg-soft);
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid transparent;
+  .proj-hint svg { width: 14px; height: 14px; }
+
+  .proj-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--line);
   }
-  .proj-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--line);
-    box-shadow: 0 8px 24px -12px rgba(24, 23, 21, 0.15);
+  .proj-item {
+    border-bottom: 1px solid var(--line);
   }
+  .proj-head {
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    padding: 26px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    font-family: var(--sans);
+    transition: padding 0.3s ease;
+  }
+  .proj-head:hover { padding-left: 12px; padding-right: 12px; }
+  .proj-head-main { flex: 1; min-width: 0; }
   .proj-title {
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--ink);
-    margin-bottom: 12px;
-    letter-spacing: -0.005em;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
   }
-  .proj-desc {
-    font-size: 14px;
-    line-height: 1.6;
+  .proj-tagline {
+    font-size: 15px;
     color: var(--ink-soft);
-    margin-bottom: 16px;
+  }
+  .proj-toggle {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    position: relative;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+  .proj-toggle::before, .proj-toggle::after {
+    content: '';
+    position: absolute;
+    background: var(--ink);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .proj-toggle::before { width: 13px; height: 1.5px; }
+  .proj-toggle::after { width: 1.5px; height: 13px; }
+  .proj-item.open .proj-toggle { background: var(--accent); border-color: var(--accent); transform: rotate(180deg); }
+  .proj-item.open .proj-toggle::before,
+  .proj-item.open .proj-toggle::after { background: #fff; }
+  .proj-item.open .proj-toggle::after { transform: scaleY(0); }
+
+  .proj-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .proj-item.open .proj-body { grid-template-rows: 1fr; }
+  .proj-body-inner { overflow: hidden; }
+  .proj-body-pad { padding: 4px 4px 32px; }
+
+  .proj-fulldesc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin-bottom: 22px;
+  }
+  .proj-points {
+    list-style: none;
+    display: grid;
+    gap: 9px;
+    margin-bottom: 26px;
+    max-width: 680px;
+  }
+  .proj-points li {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+    padding-left: 20px;
+    position: relative;
+  }
+  .proj-points li::before {
+    content: '';
+    position: absolute;
+    left: 2px; top: 9px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
   }
   .proj-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 7px;
+    margin-bottom: 0;
   }
   .proj-tags span {
     font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 4px 9px;
-    background: var(--bg);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    padding: 5px 11px;
+    background: var(--bg-soft);
     border-radius: 999px;
     color: var(--ink-soft);
   }
-  @media (max-width: 640px) { .proj-grid { grid-template-columns: 1fr; } }
+
+  @media (max-width: 640px) {
+    .proj-head { gap: 14px; }
+    .proj-title { font-size: 18px; }
+  }
 
   /* ---------- Toolbox ---------- */
   .tool-list {
@@ -382,8 +465,8 @@
     color: var(--ink-mute);
   }
   .tool-items {
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--ink);
   }
   @media (max-width: 640px) {
@@ -426,9 +509,9 @@
     gap: 6px;
   }
   .edu-list li {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--ink-soft);
-    line-height: 1.55;
+    line-height: 1.6;
     padding-left: 14px;
     position: relative;
   }
@@ -668,39 +751,156 @@
   <div class="container">
     <span class="section-label">Selected Work</span>
     <h2 class="section-title">Projects that taught me something.</h2>
+    <p class="proj-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      Click any project to expand the details.
+    </p>
 
-    <div class="proj-grid">
-      <article class="proj-card">
-        <h3 class="proj-title">AI Chatbot &amp; Agent Workflows</h3>
-        <p class="proj-desc">Built chatbot prototypes using structured prompting and iterative testing. Designed agent-based workflows to automate reporting, data processing, and multi-step task execution.</p>
-        <div class="proj-tags">
-          <span>Python</span><span>LLMs</span><span>Agents</span>
+    <div class="proj-list">
+
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false">
+          <div class="proj-head-main">
+            <h3 class="proj-title">AI Agents &amp; Learning Platform</h3>
+            <p class="proj-tagline">Autonomous agents, WordPress, and a pytest-driven learning site</p>
+          </div>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="proj-body-pad">
+              <p class="proj-fulldesc">
+                The core of my work as an AI researcher and developer. I built AI agents that handle multi-step tasks end to end, alongside web and platform work — including WordPress development and a learning site wired up with automated testing.
+              </p>
+              <ul class="proj-points">
+                <li>Designed and built AI agents that automate multi-step work — gathering information, processing it, and producing structured outputs and next steps.</li>
+                <li>Developed and customized WordPress sites, handling structure, configuration, and integrations.</li>
+                <li>Configured a learning platform that uses <strong>pytest</strong> to automatically validate exercises and learner submissions.</li>
+                <li>Spent most of my time on AI agent development, prototyping, and evaluation — iterating on prompts and behavior until results were reliable.</li>
+              </ul>
+              <div class="proj-tags">
+                <span>Python</span><span>AI Agents</span><span>LLMs</span><span>WordPress</span><span>pytest</span>
+              </div>
+              
+            </div>
+          </div>
         </div>
       </article>
 
-      <article class="proj-card">
-        <h3 class="proj-title">Automated Water Sprinkler with Rail System</h3>
-        <p class="proj-desc">Undergraduate thesis. Rail-guided, Arduino-controlled irrigation for vegetable crops. Applied fluid mechanics and machine design; ran before/after field comparisons.</p>
-        <div class="proj-tags">
-          <span>Arduino</span><span>Machine Design</span><span>Field Testing</span>
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false">
+          <div class="proj-head-main">
+            <h3 class="proj-title">Workflow Automation &amp; CRM</h3>
+            <p class="proj-tagline">n8n automations connected to Monday.com and ContactPoint</p>
+          </div>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="proj-body-pad">
+              <p class="proj-fulldesc">
+                Building the connective tissue between tools so teams spend less time on manual work. I design automations in n8n and configure CRM systems so leads, tasks, and data flow without anyone copying things by hand.
+              </p>
+              <ul class="proj-points">
+                <li>Built end-to-end automations in <strong>n8n</strong> to connect tools, trigger actions, and remove repetitive manual steps.</li>
+                <li>Configured <strong>Monday.com</strong> CRM — pipelines, statuses, automation rules, and the underlying data structures.</li>
+                <li>Integrated and managed <strong>ContactPoint (by Rentalz)</strong> for lead and contact workflows.</li>
+                <li>Improved task tracking, lead management, and day-to-day operational efficiency for the teams I support.</li>
+              </ul>
+              <div class="proj-tags">
+                <span>n8n</span><span>Monday.com</span><span>ContactPoint</span><span>CRM</span><span>Automation</span>
+              </div>
+              
+            </div>
+          </div>
         </div>
       </article>
 
-      <article class="proj-card">
-        <h3 class="proj-title">Drone Platform &amp; Detection System</h3>
-        <p class="proj-desc">Assembled a multirotor drone from scratch. Supported hardware integration, flight-readiness testing, and embedded-device setup for video and audio-based drone detection.</p>
-        <div class="proj-tags">
-          <span>UAV</span><span>Embedded</span><span>Hardware</span>
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false">
+          <div class="proj-head-main">
+            <h3 class="proj-title">Automated Water Sprinkler with Rail System</h3>
+            <p class="proj-tagline">Rail-guided, Arduino-controlled crop irrigation — undergraduate thesis</p>
+          </div>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="proj-body-pad">
+              <p class="proj-fulldesc">
+                My undergraduate thesis: a rail-guided, Arduino-controlled irrigation system for vegetable crops, designed to distribute water more evenly than manual watering.
+              </p>
+              <ul class="proj-points">
+                <li>Designed and fabricated the rail-guided sprinkler mechanism from the ground up.</li>
+                <li>Applied fluid mechanics and machine design principles to improve water distribution.</li>
+                <li>Used Arduino for motion and timing control along the rail.</li>
+                <li>Gathered field data and ran before/after performance comparisons to validate the design.</li>
+              </ul>
+              <div class="proj-tags">
+                <span>Arduino</span><span>Machine Design</span><span>Fluid Mechanics</span><span>Field Testing</span>
+              </div>
+              
+            </div>
+          </div>
         </div>
       </article>
 
-      <article class="proj-card">
-        <h3 class="proj-title">Foundational Software Projects</h3>
-        <p class="proj-desc">Calculator and cashier-system builds during academic training. Core programming concepts, structured problem-solving, and debugging across Java, C++, and Python.</p>
-        <div class="proj-tags">
-          <span>Java</span><span>C++</span><span>Python</span>
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false">
+          <div class="proj-head-main">
+            <h3 class="proj-title">Drone Platform &amp; Detection System</h3>
+            <p class="proj-tagline">Custom multirotor build plus audio/video detection support</p>
+          </div>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="proj-body-pad">
+              <p class="proj-fulldesc">
+                Hands-on UAV work — assembling a multirotor drone from scratch and supporting experiments in drone detection using embedded devices.
+              </p>
+              <ul class="proj-points">
+                <li>Assembled and integrated a multirotor drone platform for testing and experimentation.</li>
+                <li>Performed bench and flight-readiness tests, troubleshooting issues to improve stability.</li>
+                <li>Supported system setup for video and audio-based drone detection on embedded devices.</li>
+              </ul>
+              <div class="proj-tags">
+                <span>UAV</span><span>Embedded</span><span>Hardware Integration</span><span>Testing</span>
+              </div>
+              
+            </div>
+          </div>
         </div>
       </article>
+
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false">
+          <div class="proj-head-main">
+            <h3 class="proj-title">Foundational Software Projects</h3>
+            <p class="proj-tagline">Early builds across Java, C++, and Python</p>
+          </div>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="proj-body-pad">
+              <p class="proj-fulldesc">
+                The fundamentals — small applications built during academic training that grounded my programming and problem-solving.
+              </p>
+              <ul class="proj-points">
+                <li>Built basic applications such as calculators and cashier systems.</li>
+                <li>Applied core programming concepts — conditional logic, loops, and data handling.</li>
+                <li>Practiced structured problem-solving and debugging across Java, C++, and Python.</li>
+              </ul>
+              <div class="proj-tags">
+                <span>Java</span><span>C++</span><span>Python</span>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -718,11 +918,11 @@
       </div>
       <div class="tool-row">
         <div class="tool-label">AI &amp; Software</div>
-        <p class="tool-items">Python, basic C++, AI model testing &amp; evaluation, chatbot prototyping, agent workflow design, prompt structuring</p>
+        <p class="tool-items">Python, basic C++, AI agents &amp; agent workflow design, model testing &amp; evaluation, chatbot prototyping, prompt structuring, WordPress, pytest</p>
       </div>
       <div class="tool-row">
         <div class="tool-label">Workflow</div>
-        <p class="tool-items">Monday.com, ContactPoint, CRM automation rules, status pipelines, data management, reporting</p>
+        <p class="tool-items">n8n, Monday.com, ContactPoint (Rentalz), CRM automation rules, status pipelines, data management, reporting</p>
       </div>
       <div class="tool-row">
         <div class="tool-label">Safety</div>
@@ -806,6 +1006,23 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Project accordion
+  document.querySelectorAll('.proj-head').forEach(head => {
+    head.addEventListener('click', () => {
+      const item = head.closest('.proj-item');
+      const isOpen = item.classList.contains('open');
+      // Close others for a cleaner one-at-a-time feel
+      document.querySelectorAll('.proj-item.open').forEach(other => {
+        if (other !== item) {
+          other.classList.remove('open');
+          other.querySelector('.proj-head').setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      head.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
 </script>
 
 </body>
