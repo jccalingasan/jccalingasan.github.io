@@ -255,8 +255,15 @@
     font-size: 24px;
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     letter-spacing: -0.01em;
+  }
+  .practice-role {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    margin-bottom: 12px;
   }
   .practice-desc {
     font-size: 16px;
@@ -276,12 +283,31 @@
     gap: 32px;
     padding: 24px 0;
     border-top: 1px solid var(--line);
-    align-items: baseline;
-    transition: opacity 0.3s ease;
+    align-items: start;
   }
   .exp-item:last-child { border-bottom: 1px solid var(--line); }
-  .exp-list:hover .exp-item { opacity: 0.5; }
-  .exp-list:hover .exp-item:hover { opacity: 1; }
+  .exp-resp {
+    list-style: none;
+    margin-top: 14px;
+    display: grid;
+    gap: 7px;
+  }
+  .exp-resp li {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding-left: 16px;
+    position: relative;
+  }
+  .exp-resp li::before {
+    content: '';
+    position: absolute;
+    left: 2px; top: 8px;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.65;
+  }
   .exp-year {
     font-family: var(--mono);
     font-size: 12px;
@@ -721,6 +747,7 @@
         <div class="practice-num">01</div>
         <div>
           <h3 class="practice-name">Workflow Automation</h3>
+          <p class="practice-role">Workflow Automation Specialist</p>
           <p class="practice-desc">I build automations for CRM and work-management platforms like Monday.com and ContactPoint. This includes setting up pipelines, statuses, automation rules, and the data behind them.</p>
         </div>
       </div>
@@ -729,6 +756,7 @@
         <div class="practice-num">02</div>
         <div>
           <h3 class="practice-name">AI &amp; Software</h3>
+          <p class="practice-role">AI Researcher &amp; Developer</p>
           <p class="practice-desc">I build chatbot prototypes and AI agent workflows, test and evaluate models, structure prompts, and write clear technical reports. I work mainly in Python, with some C++.</p>
         </div>
       </div>
@@ -737,6 +765,7 @@
         <div class="practice-num">03</div>
         <div>
           <h3 class="practice-name">Mechanical Engineering</h3>
+          <p class="practice-role">Mechanical Engineer</p>
           <p class="practice-desc">Machine design, HVAC fundamentals, preventive maintenance, and basic diagnostics. I got hands-on training in both industry shops and school labs.</p>
         </div>
       </div>
@@ -756,6 +785,12 @@
         <div>
           <div class="exp-role">VA &amp; Workflow Automation Specialist</div>
           <div class="exp-org">Freelance</div>
+          <ul class="exp-resp">
+            <li>Design and implement workflow automations using CRM and work-management platforms.</li>
+            <li>Build and optimize process flows to improve task tracking, lead management, and efficiency.</li>
+            <li>Configure automation rules, status pipelines, and data structures within CRM systems.</li>
+            <li>Support data management, reporting, and coordination with team members.</li>
+          </ul>
         </div>
         <span class="exp-tag current">Current</span>
       </div>
@@ -765,6 +800,12 @@
         <div>
           <div class="exp-role">AI Researcher &amp; Developer</div>
           <div class="exp-org">Freelance</div>
+          <ul class="exp-resp">
+            <li>Conducted AI research across client projects, including data analysis, model evaluation, and documentation in Python.</li>
+            <li>Developed and tested AI solutions, including chatbot prototypes, improving them through structured prompts and testing.</li>
+            <li>Built AI agent workflows that automate multi-step tasks and turn findings into clear next steps for clients.</li>
+            <li>Supported UAV setup and video/audio detection experiments using embedded devices.</li>
+          </ul>
         </div>
         <span class="exp-tag">Freelance</span>
       </div>
@@ -774,6 +815,12 @@
         <div>
           <div class="exp-role">Student Assistant – Library (EMRC)</div>
           <div class="exp-org">Manuel S. Enverga University Foundation</div>
+          <ul class="exp-resp">
+            <li>Managed front-desk support for students and staff, handling requests and basic inquiries.</li>
+            <li>Maintained records and documents through organized filing, data entry, and data handling.</li>
+            <li>Provided photo and video coverage for school activities and organized media files.</li>
+            <li>Operated event equipment and handled pre-event checks and on-site troubleshooting.</li>
+          </ul>
         </div>
         <span class="exp-tag">University</span>
       </div>
@@ -783,6 +830,12 @@
         <div>
           <div class="exp-role">Mechanical Technician (OJT)</div>
           <div class="exp-org">Isuzu Pagbilao · MBT Autoworx Corporation</div>
+          <ul class="exp-resp">
+            <li>Performed preventive maintenance and routine servicing under shop and safety procedures.</li>
+            <li>Supported senior technicians with diagnostics, teardown, and inspection.</li>
+            <li>Managed tools and parts flow, including inventory and job-kit preparation.</li>
+            <li>Ran post-service quality checks under supervision.</li>
+          </ul>
         </div>
         <span class="exp-tag">Internship</span>
       </div>
@@ -805,6 +858,50 @@
       <article class="proj-item">
         <button class="proj-head" aria-expanded="false">
           <div class="proj-head-main">
+            <h3 class="proj-title">Workflow Automation &amp; CRM</h3>
+            <p class="proj-tagline">Workflow automations that connect apps and cut out manual work</p>
+          </div>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="proj-body-pad">
+              <p class="proj-fulldesc">
+                I build automations that connect different apps and tools so teams spend less time on repetitive work. This usually means setting up triggers, moving data between systems, and keeping everything in sync automatically.
+              </p>
+              <ul class="proj-points">
+                <li>Built automations that connect different apps, trigger actions, and remove repetitive manual steps.</li>
+                <li>Set up and configured CRM systems, including pipelines, statuses, and automation rules.</li>
+                <li>Connected tools and services so data and tasks move between them automatically.</li>
+                <li>Helped teams improve task tracking, lead management, and day-to-day operations.</li>
+              </ul>
+              <div class="proj-tags">
+                <span>n8n</span><span>Monday.com</span><span>ContactPoint</span><span>CRM</span><span>Automation</span>
+              </div>
+
+              <p class="proj-subhead">A few automations I've built</p>
+              <div class="auto-gallery">
+                <figure class="auto-shot">
+                  <a href="automation-1.jpg" target="_blank" rel="noopener"><img src="automation-1.jpg" alt="Daily check-in SMS automation built in n8n" loading="lazy" /></a>
+                  <figcaption><strong>Scheduled Messaging Automation.</strong> Sends out messages automatically on a set schedule, with checks to make sure each one goes to a valid recipient.</figcaption>
+                </figure>
+                <figure class="auto-shot">
+                  <a href="automation-2.jpg" target="_blank" rel="noopener"><img src="automation-2.jpg" alt="Call and text routing to Slack built in n8n" loading="lazy" /></a>
+                  <figcaption><strong>Message Routing Automation.</strong> Takes incoming events and routes the right message to the right place based on its type.</figcaption>
+                </figure>
+                <figure class="auto-shot">
+                  <a href="automation-3.jpg" target="_blank" rel="noopener"><img src="automation-3.jpg" alt="Lead to task automation built in n8n" loading="lazy" /></a>
+                  <figcaption><strong>Lead Intake Automation.</strong> Turns each new lead into a task and notifies the team automatically.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false">
+          <div class="proj-head-main">
             <h3 class="proj-title">AI Agents &amp; Learning Platform</h3>
             <p class="proj-tagline">AI agents, WordPress, and a learning site that uses pytest</p>
           </div>
@@ -814,7 +911,7 @@
           <div class="proj-body-inner">
             <div class="proj-body-pad">
               <p class="proj-fulldesc">
-                This covers most of my work as an AI researcher and developer. I built AI agents that handle multi-step tasks, did WordPress development, and set up a learning site that runs automated tests with pytest.
+                This covers most of my work as an AI researcher and developer. I focused on building AI agents that handle multi-step tasks, along with related web and platform work and automated testing.
               </p>
               <ul class="proj-points">
                 <li>Built AI agents that automate multi-step tasks, from gathering information to producing structured outputs.</li>
@@ -826,50 +923,6 @@
                 <span>Python</span><span>AI Agents</span><span>LLMs</span><span>WordPress</span><span>pytest</span>
               </div>
               
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="proj-item">
-        <button class="proj-head" aria-expanded="false">
-          <div class="proj-head-main">
-            <h3 class="proj-title">Workflow Automation &amp; CRM</h3>
-            <p class="proj-tagline">n8n automations connected to Monday.com and ContactPoint</p>
-          </div>
-          <span class="proj-toggle" aria-hidden="true"></span>
-        </button>
-        <div class="proj-body">
-          <div class="proj-body-inner">
-            <div class="proj-body-pad">
-              <p class="proj-fulldesc">
-                I build automations that connect different tools so teams spend less time on manual work. I set these up in n8n and configure CRM systems so leads, tasks, and data move automatically.
-              </p>
-              <ul class="proj-points">
-                <li>Built automations in <strong>n8n</strong> that connect tools, trigger actions, and cut out repetitive manual steps.</li>
-                <li>Set up <strong>Monday.com</strong> CRM, including pipelines, statuses, automation rules, and the data behind them.</li>
-                <li>Integrated and managed <strong>ContactPoint (by Rentalz)</strong> for lead and contact workflows.</li>
-                <li>Helped improve task tracking, lead management, and daily operations for the teams I support.</li>
-              </ul>
-              <div class="proj-tags">
-                <span>n8n</span><span>Monday.com</span><span>ContactPoint</span><span>CRM</span><span>Automation</span>
-              </div>
-
-              <p class="proj-subhead">A few automations I've built</p>
-              <div class="auto-gallery">
-                <figure class="auto-shot">
-                  <a href="automation-1.jpg" target="_blank" rel="noopener"><img src="automation-1.jpg" alt="Daily check-in SMS automation built in n8n" loading="lazy" /></a>
-                  <figcaption><strong>Daily Check-in SMS Automation.</strong> Runs every morning on a schedule. It pulls the day's reservations, loops through each guest, validates phone numbers, sends the SMS, and logs any invalid numbers.</figcaption>
-                </figure>
-                <figure class="auto-shot">
-                  <a href="automation-2.jpg" target="_blank" rel="noopener"><img src="automation-2.jpg" alt="Call and text routing to Slack built in n8n" loading="lazy" /></a>
-                  <figcaption><strong>Call &amp; Text Routing to Slack.</strong> A webhook that checks whether an incoming event is a call or a text, then posts the right message to the matching Slack channel.</figcaption>
-                </figure>
-                <figure class="auto-shot">
-                  <a href="automation-3.jpg" target="_blank" rel="noopener"><img src="automation-3.jpg" alt="Lead to task automation built in n8n" loading="lazy" /></a>
-                  <figcaption><strong>Lead-to-Task Automation.</strong> A webhook that turns each new lead into a task in Monday.com and notifies the team in Slack.</figcaption>
-                </figure>
-              </div>
             </div>
           </div>
         </div>
