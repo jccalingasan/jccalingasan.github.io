@@ -443,6 +443,50 @@
     .proj-title { font-size: 18px; }
   }
 
+  /* Automation gallery */
+  .proj-subhead {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin: 26px 0 14px;
+  }
+  .auto-gallery {
+    display: grid;
+    gap: 22px;
+    max-width: 760px;
+  }
+  .auto-shot {
+    margin: 0;
+  }
+  .auto-shot a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #1f1d1b;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .auto-shot a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -14px rgba(24, 23, 21, 0.4);
+  }
+  .auto-shot img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .auto-shot figcaption {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+  .auto-shot figcaption strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
   /* ---------- Toolbox ---------- */
   .tool-list {
     display: grid;
@@ -626,7 +670,7 @@
     <p class="hero-tagline">
       Mechanical engineer working across AI, automation, and physical systems.
     </p>
-    <p class="hero-role">Lucena City, Philippines</p>
+    <p class="hero-role">Philippines</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="CV_Jc_Calingasan.pdf" download>
         Download CV
@@ -810,7 +854,22 @@
               <div class="proj-tags">
                 <span>n8n</span><span>Monday.com</span><span>ContactPoint</span><span>CRM</span><span>Automation</span>
               </div>
-              
+
+              <p class="proj-subhead">A few automations I've built</p>
+              <div class="auto-gallery">
+                <figure class="auto-shot">
+                  <a href="automation-1.jpg" target="_blank" rel="noopener"><img src="automation-1.jpg" alt="Daily check-in SMS automation built in n8n" loading="lazy" /></a>
+                  <figcaption><strong>Daily Check-in SMS Automation</strong> — runs every morning on a schedule: pulls the day's reservations, loops through each guest, validates phone numbers (E.164), sends the SMS, and logs any invalid numbers.</figcaption>
+                </figure>
+                <figure class="auto-shot">
+                  <a href="automation-2.jpg" target="_blank" rel="noopener"><img src="automation-2.jpg" alt="Call and text routing to Slack built in n8n" loading="lazy" /></a>
+                  <figcaption><strong>Call &amp; Text Routing to Slack</strong> — a webhook that detects whether an incoming event is a call or a text and posts the right message to the matching Slack channel.</figcaption>
+                </figure>
+                <figure class="auto-shot">
+                  <a href="automation-3.jpg" target="_blank" rel="noopener"><img src="automation-3.jpg" alt="Lead to task automation built in n8n" loading="lazy" /></a>
+                  <figcaption><strong>Lead-to-Task Automation</strong> — a webhook that turns each new lead into a task in Monday.com and notifies the team in Slack.</figcaption>
+                </figure>
+              </div>
             </div>
           </div>
         </div>
@@ -982,7 +1041,7 @@
       </div>
       <div class="contact-block">
         <span class="lbl">Based in</span>
-        <p>Lucena City, Philippines</p>
+        <p>Philippines</p>
       </div>
     </div>
   </div>
