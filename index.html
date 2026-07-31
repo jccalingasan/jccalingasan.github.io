@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Julio Cesar Calingasan · Portfolio</title>
-<meta name="description" content="Portfolio of Julio Cesar M. Calingasan, a mechanical engineer working with AI, automation, and software." />
+<meta name="description" content="Portfolio of Julio Cesar M. Calingasan, an automation and AI specialist building workflows and AI-driven systems." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -184,6 +184,49 @@
     color: var(--ink);
     margin-bottom: 48px;
     max-width: 700px;
+  }
+
+  /* ---------- Intro Video ---------- */
+  .intro-video {
+    background: var(--bg-soft);
+    padding: 72px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .intro-video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .intro-video-copy p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .intro-video-copy p:last-child { margin-bottom: 0; }
+  .intro-video-copy strong { color: var(--ink); font-weight: 600; }
+
+  .intro-video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #1f1d1b;
+    box-shadow: 0 20px 44px -20px rgba(24, 23, 21, 0.35);
+    border: 1px solid var(--line);
+  }
+  .intro-video-frame video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  @media (max-width: 760px) {
+    .intro-video-grid { grid-template-columns: 1fr; gap: 32px; }
   }
 
   /* ---------- About (with photo) ---------- */
@@ -422,6 +465,14 @@
     max-width: 680px;
     margin-bottom: 22px;
   }
+  .proj-fulldesc a {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+  }
+  .proj-fulldesc a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
   .proj-points {
     list-style: none;
     display: grid;
@@ -508,6 +559,23 @@
     color: var(--ink);
     font-weight: 600;
   }
+
+  /* GitHub badge */
+  .proj-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 7px 14px;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 6px;
+    margin-bottom: 22px;
+    transition: background 0.2s ease;
+  }
+  .proj-github:hover { background: var(--accent); }
+  .proj-github svg { width: 14px; height: 14px; }
 
   /* ---------- Toolbox ---------- */
   .tool-list {
@@ -690,7 +758,7 @@
       Julio Cesar Calingasan
     </h1>
     <p class="hero-tagline">
-      Mechanical engineering grad who builds AI agents and automation workflows.
+      Automation and AI specialist building workflows and AI-driven systems that take repetitive work off a team's plate.
     </p>
     <p class="hero-role">Philippines</p>
     <div class="hero-actions">
@@ -706,6 +774,26 @@
   </div>
 </header>
 
+<!-- INTRO VIDEO -->
+<section class="intro-video reveal">
+  <div class="container">
+    <span class="section-label">Introduction</span>
+    <h2 class="section-title">Meet me, in a minute.</h2>
+    <div class="intro-video-grid">
+      <div class="intro-video-copy">
+        <p>A short introduction to who I am, what I build, and how I work.</p>
+        <p><strong>Best watched with sound.</strong></p>
+      </div>
+      <div class="intro-video-frame">
+        <video controls preload="metadata" poster="intro-poster.jpg" playsinline>
+          <source src="intro.mp4" type="video/mp4" />
+          Your browser doesn't support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT (with photo) -->
 <section id="about" class="reveal">
   <div class="container">
@@ -715,13 +803,13 @@
     <div class="about-grid">
       <div class="about-text">
         <p>
-          I'm a <strong>Mechanical Engineering</strong> graduate from Manuel S. Enverga University Foundation. Right now I work as a freelance workflow automation specialist, and before that I worked as an AI researcher and developer on a range of client projects.
+          I'm an <strong>Automation and AI specialist</strong> who builds workflows and AI-driven systems that take repetitive, manual work off a team's plate. Most of my day is spent in <strong>n8n</strong> and <strong>GoHighLevel</strong>, with Python filling in wherever the no-code nodes can't reach.
         </p>
         <p>
-          I'm comfortable working on both the software and hardware side of things. Most of my work is about taking a manual or repetitive process and making it automated and reliable. That might be an AI agent, a CRM setup, or an automation that connects a few tools together.
+          Before this, I worked as an AI researcher and developer on client projects — building chatbot prototypes, multi-agent workflows, and internal tools. I also run short-term rental operations across Airbnb, Booking.com, Hostaway, and SuiteOp, which means I understand what an operations team actually needs from automation, not just what it looks like on paper.
         </p>
         <p>
-          Outside of client work, I spend my time building drones, testing AI agents, and trying out new automation tools.
+          I'm a Mechanical Engineering graduate, self-taught in software, and comfortable working independently. Outside of client work, I build side projects, test AI tools, and mess around with drones.
         </p>
       </div>
 
@@ -742,9 +830,9 @@
       <div class="practice-item">
         <div class="practice-num">01</div>
         <div>
-          <h3 class="practice-name">Workflow Automation</h3>
-          <p class="practice-role">Workflow Automation Specialist</p>
-          <p class="practice-desc">I build automations for CRM and work-management platforms like Monday.com, ContactPoint, and GHL. This includes setting up pipelines, statuses, automation rules, and the data behind them.</p>
+          <h3 class="practice-name">Automation &amp; Workflow</h3>
+          <p class="practice-role">IT &amp; Automation Specialist</p>
+          <p class="practice-desc">I build workflows in n8n and GoHighLevel, integrate services through REST APIs, webhooks, JSON, and OAuth, and set up CRMs including pipelines, tags, custom fields, lead scoring, and multi-channel follow-up. I also work with Monday.com and ContactPoint.</p>
         </div>
       </div>
 
@@ -753,16 +841,25 @@
         <div>
           <h3 class="practice-name">AI &amp; Software</h3>
           <p class="practice-role">AI Researcher &amp; Developer</p>
-          <p class="practice-desc">I build chatbot prototypes and AI agent workflows, test and evaluate models, structure prompts, and write clear technical reports. I work mainly in Python, with some C++.</p>
+          <p class="practice-desc">I build AI agent workflows, chatbot prototypes, and internal tools. I write in Python (FastAPI, SQLAlchemy, pytest), use Claude and ChatGPT as part of how I build, and design prompts and test iterations that actually hold up in production.</p>
         </div>
       </div>
 
       <div class="practice-item">
         <div class="practice-num">03</div>
         <div>
+          <h3 class="practice-name">Short-Term Rental Ops</h3>
+          <p class="practice-role">Rental Operations Support</p>
+          <p class="practice-desc">Listing setup and property onboarding across Airbnb, Booking.com, Hostaway, and SuiteOp. I also maintain Hostbuddy AI guest-messaging by updating knowledge bases so automated replies stay accurate and on-brand.</p>
+        </div>
+      </div>
+
+      <div class="practice-item">
+        <div class="practice-num">04</div>
+        <div>
           <h3 class="practice-name">Mechanical Engineering</h3>
           <p class="practice-role">Mechanical Engineer</p>
-          <p class="practice-desc">Machine design, HVAC fundamentals, preventive maintenance, and basic diagnostics. I got hands-on training in both industry shops and school labs.</p>
+          <p class="practice-desc">Machine design, HVAC fundamentals, preventive maintenance, and basic diagnostics. Hands-on training across industry shops and school labs.</p>
         </div>
       </div>
     </div>
@@ -777,30 +874,36 @@
 
     <div class="exp-list">
       <div class="exp-item">
-        <div class="exp-year">2026 – Now</div>
+        <div class="exp-year">Feb 2026 – Now</div>
         <div>
-          <div class="exp-role">VA &amp; Workflow Automation Specialist</div>
+          <div class="exp-role">IT &amp; Automation Specialist</div>
           <div class="exp-org">Freelance</div>
           <ul class="exp-resp">
-            <li>Design and implement workflow automations using CRM and work-management platforms.</li>
-            <li>Build and optimize process flows to improve task tracking, lead management, and efficiency.</li>
-            <li>Configure automation rules, status pipelines, and data structures within CRM systems.</li>
-            <li>Support data management, reporting, and coordination with team members.</li>
+            <li>Design, build, and maintain workflow automations in n8n with multi-step branching, triggers, and error handling that run reliably unattended.</li>
+            <li>Build and configure GoHighLevel automations, including lead scoring, routing, multi-channel follow-up, pipelines, tags, and custom fields.</li>
+            <li>Integrate tools and services through REST APIs, webhooks, JSON, and OAuth, using Python for fetch, transform, and post steps that no-code nodes don't cover.</li>
+            <li>Configure CRM and work management platforms such as Monday.com, setting up pipelines, statuses, automation rules, and data structures.</li>
+            <li>Manage short-term rental operations across Airbnb, Booking.com, Hostaway, and SuiteOp, including listing setup and onboarding new properties.</li>
+            <li>Set up and maintain Hostbuddy AI guest-messaging, keeping knowledge bases accurate and on-brand.</li>
+            <li>Build email automations and lead-management flows with duplicate and validation checks.</li>
+            <li>Maintain data and reporting in Google Sheets and Google Workspace.</li>
           </ul>
         </div>
         <span class="exp-tag current">Current</span>
       </div>
 
       <div class="exp-item">
-        <div class="exp-year">2024 – 2026</div>
+        <div class="exp-year">Jul 2024 – Feb 2026</div>
         <div>
           <div class="exp-role">AI Researcher &amp; Developer</div>
           <div class="exp-org">Freelance</div>
           <ul class="exp-resp">
-            <li>Conducted AI research across client projects, including data analysis, model evaluation, and documentation in Python.</li>
-            <li>Developed and tested AI solutions, including chatbot prototypes, improving them through structured prompts and testing.</li>
-            <li>Built AI agent workflows that automate multi-step tasks and turn findings into clear next steps for clients.</li>
-            <li>Supported UAV setup and video/audio detection experiments using embedded devices.</li>
+            <li>Conducted AI research across client projects, including data analysis, model evaluation and testing, and documentation using Python and basic C++.</li>
+            <li>Developed and tested AI-based solutions, including chatbot prototypes improved through structured prompting and test iterations.</li>
+            <li>Built AI agent workflows to automate multi-step tasks and translated findings into clear next steps for clients.</li>
+            <li>Prepared technical summaries and reports explaining findings, test results, issues, and recommended actions.</li>
+            <li>Supported UAV system setup and video/audio detection experiments using embedded devices.</li>
+            <li>Built and integrated a custom multirotor drone, performed bench and flight-readiness tests, and troubleshot issues to improve stability.</li>
           </ul>
         </div>
         <span class="exp-tag">Freelance</span>
@@ -910,8 +1013,8 @@
       <article class="proj-item">
         <button class="proj-head" aria-expanded="false">
           <div class="proj-head-main">
-            <h3 class="proj-title">AI Agents &amp; Learning Platform</h3>
-            <p class="proj-tagline">AI agents, WordPress, and a learning site that uses pytest</p>
+            <h3 class="proj-title">StockMate — Inventory Management Web App</h3>
+            <p class="proj-tagline">Full-stack inventory tool built in FastAPI with a real database behind it</p>
           </div>
           <span class="proj-toggle" aria-hidden="true"></span>
         </button>
@@ -919,18 +1022,133 @@
           <div class="proj-body-inner">
             <div class="proj-body-pad">
               <p class="proj-fulldesc">
-                This covers most of my work as an AI researcher and developer. I focused on building AI agents that handle multi-step tasks, along with related web and platform work and automated testing.
+                A full-stack inventory management app I built end to end. Handles items, stock movements, filtering, and activity logs, backed by a proper relational database instead of a spreadsheet.
               </p>
+              <a class="proj-github" href="https://github.com/jccalingasan/stockmate" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.4 3.6 1 .1-.8.4-1.4.8-1.7-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.3-3.2-.1-.4-.6-1.6.1-3.3 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 2.9.1 3.3.8.9 1.3 2 1.3 3.2 0 4.6-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6C20.6 21.8 24 17.3 24 12c0-6.6-5.4-12-12-12z"/></svg>
+                View on GitHub
+              </a>
               <ul class="proj-points">
-                <li>Built AI agents that automate multi-step tasks, from gathering information to producing structured outputs.</li>
-                <li>Built and customized WordPress sites, including structure, configuration, and integrations.</li>
-                <li>Configured a learning platform that uses <strong>pytest</strong> to automatically validate exercises and learner submissions.</li>
-                <li>Focused mostly on building, prototyping, and testing AI agents.</li>
+                <li>Built with FastAPI, SQLAlchemy, HTMX, and Tailwind.</li>
+                <li>Implemented CRUD operations, a dashboard, filtering, and activity logging.</li>
+                <li>Backed by a relational database for real data integrity.</li>
+                <li>Deployed and available for anyone to inspect on GitHub.</li>
               </ul>
               <div class="proj-tags">
-                <span>Python</span><span>AI Agents</span><span>LLMs</span><span>WordPress</span><span>pytest</span>
+                <span>Python</span><span>FastAPI</span><span>SQLAlchemy</span><span>HTMX</span><span>Tailwind</span>
               </div>
-              
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false">
+          <div class="proj-head-main">
+            <h3 class="proj-title">Inquire — Multi-Agent AI Research Assistant</h3>
+            <p class="proj-tagline">Planner, researchers, and a writer coordinating to answer real questions</p>
+          </div>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="proj-body-pad">
+              <p class="proj-fulldesc">
+                A multi-agent research assistant I built from primitives — no orchestration framework. A Planner agent breaks a task into sub-questions, multiple Researcher agents run in parallel, and a Writer agent composes the final structured output. Progress is streamed live so you can see it think.
+              </p>
+              <ul class="proj-points">
+                <li>Designed a multi-agent architecture with Planner, parallel Researchers, and a Writer.</li>
+                <li>Implemented the orchestration by hand, including parallel execution and LLM API calls.</li>
+                <li>Added live status streaming so the process is observable end to end.</li>
+                <li>Focused on getting the coordination right without hiding it behind a framework.</li>
+              </ul>
+              <div class="proj-tags">
+                <span>Python</span><span>FastAPI</span><span>Multi-Agent</span><span>LLMs</span><span>Streaming</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false">
+          <div class="proj-head-main">
+            <h3 class="proj-title">ReelForge — Local Video Automation Tool</h3>
+            <p class="proj-tagline">Batch-converts source clips into 1080×1920 reels with FFmpeg</p>
+          </div>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="proj-body-pad">
+              <p class="proj-fulldesc">
+                A local tool that batch-converts video clips into vertical 1080×1920 reels using FFmpeg. Reads titles from a CSV, keeps the original audio, sorts output by date and account, and logs which renders passed or failed. Wrapped in a Flask interface so you can watch the process instead of guessing.
+              </p>
+              <ul class="proj-points">
+                <li>Batch conversion driven by FFmpeg, configured from a CSV of titles.</li>
+                <li>Preserves original audio and outputs sorted by date and account.</li>
+                <li>Logs successful and failed renders for easy troubleshooting.</li>
+                <li>Runs on demand or on a schedule, with a small Flask interface for visibility.</li>
+              </ul>
+              <div class="proj-tags">
+                <span>Python</span><span>FFmpeg</span><span>Flask</span><span>Automation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false">
+          <div class="proj-head-main">
+            <h3 class="proj-title">AI Chatbots &amp; Agent Workflows</h3>
+            <p class="proj-tagline">Chatbot prototypes and multi-step agent workflows for client projects</p>
+          </div>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="proj-body-pad">
+              <p class="proj-fulldesc">
+                Most of my work as an AI researcher and developer. Chatbot prototypes and agent-based workflows that automate multi-step tasks, tested and improved through structured prompting and iteration.
+              </p>
+              <ul class="proj-points">
+                <li>Developed chatbot prototypes using structured prompting and testing strategies.</li>
+                <li>Built agent-based workflows to automate reporting, data processing, and task execution.</li>
+                <li>Evaluated model responses and improved performance through iterative testing.</li>
+                <li>Turned findings and results into clear technical summaries for clients.</li>
+              </ul>
+              <div class="proj-tags">
+                <span>Python</span><span>AI Agents</span><span>LLMs</span><span>Prompt Engineering</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false">
+          <div class="proj-head-main">
+            <h3 class="proj-title">Learning Platform &amp; WordPress Work</h3>
+            <p class="proj-tagline">Automated exercise validation with pytest, plus WordPress builds</p>
+          </div>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="proj-body-pad">
+              <p class="proj-fulldesc">
+                Two related pieces of web and platform work. On a Python learning platform, I maintained the exercise scripts and used <strong>pytest</strong> to automatically validate learner submissions. Separately, I built and maintained WordPress sites end to end, including my own portfolio.
+              </p>
+              <ul class="proj-points">
+                <li>Maintained a learning platform where Python exercises were auto-validated with pytest.</li>
+                <li>Corrected outdated or error-prone exercises so validation ran reliably.</li>
+                <li>Built and customized WordPress sites end to end, including structure and integrations.</li>
+                <li>Developed and maintained a personal web portfolio.</li>
+              </ul>
+              <div class="proj-tags">
+                <span>Python</span><span>pytest</span><span>WordPress</span>
+              </div>
             </div>
           </div>
         </div>
@@ -948,7 +1166,7 @@
           <div class="proj-body-inner">
             <div class="proj-body-pad">
               <p class="proj-fulldesc">
-                My undergraduate thesis. It's a rail-guided, Arduino-controlled irrigation system for vegetable crops, built to water the plots more evenly than doing it by hand.
+                My undergraduate thesis. A rail-guided, Arduino-controlled irrigation system for vegetable crops, built to water the plots more evenly than doing it by hand.
               </p>
               <ul class="proj-points">
                 <li>Designed and fabricated the rail-guided sprinkler mechanism from the ground up.</li>
@@ -994,7 +1212,6 @@
               <div class="proj-tags">
                 <span>UAV</span><span>Embedded</span><span>Hardware Integration</span><span>Testing</span>
               </div>
-              
             </div>
           </div>
         </div>
@@ -1022,7 +1239,6 @@
               <div class="proj-tags">
                 <span>Java</span><span>C++</span><span>Python</span>
               </div>
-              
             </div>
           </div>
         </div>
@@ -1040,16 +1256,32 @@
 
     <div class="tool-list">
       <div class="tool-row">
-        <div class="tool-label">Mechanical</div>
-        <p class="tool-items">HVAC fundamentals, machine design, preventive maintenance, mechanical diagnostics, power-plant &amp; industrial systems</p>
+        <div class="tool-label">Automation &amp; Workflow</div>
+        <p class="tool-items">n8n (primary), GoHighLevel, ContactPoint (GHL white-label), Monday.com, Make, CRM automation rules, pipelines, tags, custom fields, lead scoring and routing, email automation</p>
       </div>
       <div class="tool-row">
         <div class="tool-label">AI &amp; Software</div>
-        <p class="tool-items">Python, basic C++, AI agents &amp; agent workflow design, model testing &amp; evaluation, chatbot prototyping, prompt structuring, WordPress, pytest</p>
+        <p class="tool-items">Python, FastAPI, basic C++ and Java, AI agents &amp; multi-agent workflow design, chatbot prototyping, prompt engineering, Claude and ChatGPT as working tools, AI model testing &amp; evaluation</p>
       </div>
       <div class="tool-row">
-        <div class="tool-label">Workflow</div>
-        <p class="tool-items">n8n, GHL, Monday.com, ContactPoint (Rentalz), CRM automation rules, status pipelines, data management, reporting</p>
+        <div class="tool-label">Integrations &amp; Data</div>
+        <p class="tool-items">REST APIs, webhooks, JSON, OAuth, SQL via SQLAlchemy, technical documentation, data collection and analysis</p>
+      </div>
+      <div class="tool-row">
+        <div class="tool-label">Rental &amp; Property Ops</div>
+        <p class="tool-items">Airbnb, Booking.com, Hostaway, Hostbuddy (AI guest-messaging), SuiteOp, Amazon Business, property onboarding and listing setup</p>
+      </div>
+      <div class="tool-row">
+        <div class="tool-label">Dev Tools &amp; Web</div>
+        <p class="tool-items">PyCharm, Git/GitHub, pytest, HTML, CSS, JavaScript-style scripting, WordPress</p>
+      </div>
+      <div class="tool-row">
+        <div class="tool-label">Productivity &amp; Media</div>
+        <p class="tool-items">Google Workspace (Gmail, Drive, Sheets), Vimeo, Sony Vegas, FFmpeg</p>
+      </div>
+      <div class="tool-row">
+        <div class="tool-label">Mechanical</div>
+        <p class="tool-items">HVAC fundamentals, machine design, preventive maintenance, mechanical diagnostics, power-plant &amp; industrial systems</p>
       </div>
       <div class="tool-row">
         <div class="tool-label">Safety</div>
@@ -1082,7 +1314,7 @@
         <h3 class="edu-title">Continued learning</h3>
         <p class="edu-meta">Industry-recognized credentials</p>
         <ul class="edu-list">
-          <li>Oracle Cloud Infrastructure 2025 AI Foundations Associate</li>
+          <li>Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate</li>
           <li>Safety Officer 2, BOSH Training</li>
         </ul>
       </div>
