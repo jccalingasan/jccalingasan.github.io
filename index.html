@@ -45,7 +45,7 @@
     animation:glowDrift 26s ease-in-out infinite alternate}
   .bg-halftone{inset:-30% -30% 0 -30%;
     background-image:radial-gradient(rgba(230,0,18,0.16) 1.1px,transparent 1.4px);
-    background-size:17px 17px;opacity:.5;
+    background-size:17px 17px;opacity:.28;
     -webkit-mask-image:linear-gradient(160deg,#000,transparent 70%);mask-image:linear-gradient(160deg,#000,transparent 70%)}
   .bg-streak{top:4%;left:-10%;white-space:nowrap}
   .bg-streak span{display:inline-block;font-family:var(--display);font-size:150px;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(230,0,18,0.12);letter-spacing:-.06em;transform:rotate(-5deg);animation:streakDrift 16s linear infinite}
@@ -56,7 +56,7 @@
   .bg-burst .spin{transform-origin:300px 300px;animation:spinSlow 70s linear infinite}
   .bg-vignette{inset:0;background:radial-gradient(120% 90% at 50% 10%,transparent 50%,rgba(9,9,10,.75) 100%)}
   .bg-glow2{inset:-20%;background-image:radial-gradient(38% 46% at 82% 8%,rgba(230,0,18,0.13),transparent 72%),radial-gradient(42% 52% at 6% 62%,rgba(230,0,18,0.11),transparent 72%),radial-gradient(34% 42% at 48% 52%,rgba(255,31,46,0.07),transparent 70%);animation:glowDrift2 32s ease-in-out infinite alternate}
-  .bg-embers{position:absolute;inset:0;width:100%;height:100%;opacity:.75;mix-blend-mode:screen}
+  .bg-net{position:absolute;inset:0;width:100%;height:100%;opacity:.7}
   .bg-sheen{top:-60%;left:-45%;width:48%;height:220%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.05),transparent);transform:rotate(12deg);animation:sheen 12s ease-in-out infinite}
   .bg-grain{inset:0;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px 150px;animation:grain 2s steps(6) infinite}
   main,nav,header,footer,section{position:relative;z-index:1}
@@ -74,13 +74,21 @@
   @media(max-width:900px){.prog-rail{display:none}}
 
   /* ============ SOUND TOGGLE ============ */
-  .sfx{position:fixed;right:18px;bottom:18px;z-index:90;display:inline-flex;align-items:center;gap:8px;
+  .sfx,.music{display:inline-flex;align-items:center;gap:8px;
     font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;
     background:#000;border:2px solid var(--red);padding:9px 13px;transform:skewX(-8deg);box-shadow:4px 4px 0 rgba(230,0,18,.5);transition:transform .16s,background .16s}
-  .sfx>*{transform:skewX(8deg)}
-  .sfx:hover{transform:skewX(-8deg) translateY(-2px);background:var(--red-deep)}
-  .sfx-dot{width:8px;height:8px;border-radius:50%;background:var(--ink-mute)}
-  .sfx.on .sfx-dot{background:var(--red);box-shadow:0 0 8px var(--red);animation:pulse 1.6s ease-in-out infinite}
+  .sfx{position:fixed;right:18px;bottom:18px;z-index:90}
+  .music-ctrl{position:fixed;right:18px;bottom:62px;z-index:90;display:inline-flex;align-items:center;gap:9px}
+  .vol{-webkit-appearance:none;appearance:none;width:84px;height:16px;background:transparent;cursor:pointer}
+  .vol::-webkit-slider-runnable-track{height:7px;border:1.5px solid var(--red);background:linear-gradient(90deg,var(--red) var(--fill,20%),#151515 var(--fill,20%))}
+  .vol::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-5px;width:8px;height:15px;background:#fff;border:1.5px solid #000}
+  .vol::-moz-range-track{height:7px;border:1.5px solid var(--red);background:#151515}
+  .vol::-moz-range-progress{height:7px;background:var(--red)}
+  .vol::-moz-range-thumb{width:8px;height:15px;background:#fff;border:1.5px solid #000;border-radius:0}
+  .sfx>*,.music>*{transform:skewX(8deg)}
+  .sfx:hover,.music:hover{transform:skewX(-8deg) translateY(-2px);background:var(--red-deep)}
+  .sfx-dot,.music-dot{width:8px;height:8px;border-radius:50%;background:var(--ink-mute)}
+  .sfx.on .sfx-dot,.music.on .music-dot{background:var(--red);box-shadow:0 0 8px var(--red);animation:pulse 1.6s ease-in-out infinite}
 
   /* ============ NAV ============ */
   .nav{position:sticky;top:0;z-index:60;background:rgba(9,9,10,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:2px solid var(--red)}
@@ -317,7 +325,7 @@
       <path d="M 300.0,77.0 L 329.9,149.6 L 390.4,81.8 L 392.7,161.2 L 473.8,126.2 L 416.8,222.0 L 538.0,201.4 L 430.3,274.1 L 531.2,300.0 L 458.5,331.5 L 502.0,383.7 L 424.3,383.1 L 450.9,450.9 L 387.5,431.0 L 394.7,528.6 L 329.9,450.3 L 300.0,552.6 L 272.4,438.9 L 206.6,525.6 L 214.3,428.3 L 131.2,468.8 L 176.9,382.2 L 68.1,396.0 L 133.3,333.2 L 66.2,300.0 L 145.6,269.3 L 102.0,218.0 L 167.7,211.6 L 128.9,128.9 L 204.3,156.8 L 204.3,68.9 L 272.6,162.4 Z" fill="#09090a"/>
     </g></svg>
   </div>
-  <canvas class="bg-embers" id="embers"></canvas>
+  <canvas class="bg-net" id="netcanvas"></canvas>
   <div class="bg-sheen"></div>
   <div class="bg-grain"></div>
   <div class="bg-vignette"></div>
@@ -335,6 +343,11 @@
   <a href="#contact" data-sec="contact"></a>
 </div>
 
+<div class="music-ctrl">
+  <input type="range" class="vol" id="volSlider" min="0" max="100" value="20" aria-label="Music volume" title="Music volume" />
+  <button class="music on" id="musicToggle" aria-pressed="true" title="Toggle background music"><span class="music-dot"></span><span id="musicLabel">Music: On</span></button>
+</div>
+<audio id="bgAudio" loop preload="auto" src="./bg-music.mp3"></audio>
 <button class="sfx" id="sfxToggle" aria-pressed="false" title="Toggle UI sounds"><span class="sfx-dot"></span><span id="sfxLabel">Sound: Off</span></button>
 
 <!-- NAV -->
@@ -672,24 +685,81 @@
   })();
   const tgl=document.getElementById('sfxToggle'),lbl=document.getElementById('sfxLabel');
   tgl.addEventListener('click',()=>{const n=!sfx.isOn();sfx.setOn(n);tgl.classList.toggle('on',n);tgl.setAttribute('aria-pressed',String(n));lbl.textContent=n?'Sound: On':'Sound: Off';if(n)sfx.confirm()});
-  document.querySelectorAll('.nav-links a,.btn,.proj-head,.proj-github,.auto-shot a,.sfx,.prog-rail a').forEach(el=>el.addEventListener('mouseenter',()=>sfx.hover()));
+  document.querySelectorAll('.nav-links a,.btn,.proj-head,.proj-github,.auto-shot a,.sfx,.music,.prog-rail a').forEach(el=>el.addEventListener('mouseenter',()=>sfx.hover()));
   document.querySelectorAll('.nav-links a,.btn,.proj-github').forEach(el=>el.addEventListener('click',()=>sfx.click()));
+
+  // background music: ON by default (browsers start it at the visitor's first interaction), with volume control + off switch
+  const bgAudio=document.getElementById('bgAudio'),mtgl=document.getElementById('musicToggle'),mlbl=document.getElementById('musicLabel'),vol=document.getElementById('volSlider');
+  let fadeTimer=null,wanted=true,gestureBound=false;
+  try{ if(localStorage.getItem('jcMusicOn')==='0') wanted=false; const sv=localStorage.getItem('jcMusicVol'); if(sv!==null) vol.value=sv; }catch(e){}
+  function save(){ try{ localStorage.setItem('jcMusicOn',wanted?'1':'0'); localStorage.setItem('jcMusicVol',vol.value); }catch(e){} }
+  function tvol(){ return Math.max(0,Math.min(1,(+vol.value)/100)); }
+  function fillUI(){ vol.style.setProperty('--fill',vol.value+'%'); }
+  function ui(on){ mtgl.classList.toggle('on',on); mtgl.setAttribute('aria-pressed',String(on)); mlbl.textContent=on?'Music: On':'Music: Off'; }
+  function now(){ return (window.performance&&performance.now)?performance.now():Date.now(); }
+  function fadeTo(target,then){ clearInterval(fadeTimer); const start=bgAudio.volume||0,dur=520,t0=now(); const id=setInterval(()=>{ const p=Math.min(1,(now()-t0)/dur); bgAudio.volume=Math.max(0,Math.min(1,start+(target-start)*p)); if(p>=1){ clearInterval(id); if(fadeTimer===id&&then) then(); } },30); fadeTimer=id; }
+  function play(fade){
+    bgAudio.volume=fade?0:tvol();
+    const pr=bgAudio.play();
+    if(pr&&pr.then){ pr.then(()=>{ ui(true); if(fade) fadeTo(tvol()); }).catch(err=>{ if(err&&err.name==='NotAllowedError'){ if(!gestureBound) bindGesture(); } else { ui(false); } }); }
+    else { ui(true); if(fade) fadeTo(tvol()); }
+  }
+  function bindGesture(){
+    gestureBound=true;
+    const evs=['pointerdown','keydown','touchstart','scroll','wheel'];
+    const go=()=>{ evs.forEach(e=>window.removeEventListener(e,go)); gestureBound=false; if(wanted) play(true); };
+    evs.forEach(e=>window.addEventListener(e,go,{once:true,passive:true}));
+  }
+  bgAudio.addEventListener('error',()=>ui(false));
+  fillUI();
+  if(wanted) play(true); else ui(false);
+  mtgl.addEventListener('click',()=>{
+    wanted=!wanted; save();
+    if(wanted){ play(true); }
+    else { ui(false); fadeTo(0,()=>bgAudio.pause()); }
+  });
+  vol.addEventListener('input',()=>{
+    fillUI(); save();
+    if(wanted){ clearInterval(fadeTimer); bgAudio.volume=tvol(); if(bgAudio.paused) play(false); }
+  });
 </script>
 
-<!-- floating embers -->
+<!-- automation node network -->
 <script>
 (function(){
-  const c=document.getElementById('embers'); if(!c) return;
+  const c=document.getElementById('netcanvas'); if(!c) return;
   const ctx=c.getContext('2d'); if(!ctx) return;
   const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  let w,h,dpr,parts=[],raf;
-  function mk(init){return{x:Math.random()*w,y:init?Math.random()*h:h+12,r:Math.random()*2+0.6,vy:-(Math.random()*0.35+0.12),drift:(Math.random()-0.5)*0.25,a:Math.random()*0.5+0.2,red:Math.random()<0.72,tw:Math.random()*6.28};}
-  function size(){dpr=Math.min(devicePixelRatio||1,2);w=c.clientWidth;h=c.clientHeight;c.width=w*dpr;c.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const n=Math.round(Math.min(72,w/18));parts=[];for(let i=0;i<n;i++)parts.push(mk(true));}
-  function dot(p,a){ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle=p.red?'rgba(230,0,18,'+a+')':'rgba(246,244,241,'+(a*0.8)+')';ctx.fill();}
-  function draw(){ctx.clearRect(0,0,w,h);for(const p of parts){p.y+=p.vy;p.x+=p.drift;p.tw+=0.04;if(p.y<-12)Object.assign(p,mk(false));dot(p,p.a*(0.6+Math.sin(p.tw)*0.4));}raf=requestAnimationFrame(draw);}
+  let w,h,dpr,nodes=[],raf,mx=-9999,my=-9999;
+  const LINK=152,LINKM=185;
+  function size(){
+    dpr=Math.min(devicePixelRatio||1,2);w=c.clientWidth;h=c.clientHeight;
+    c.width=w*dpr;c.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    const n=Math.max(20,Math.min(78,Math.round(w*h/16000)));
+    nodes=[];for(let i=0;i<n;i++)nodes.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-0.5)*0.26,vy:(Math.random()-0.5)*0.26,r:Math.random()*1.5+1});
+  }
+  function step(){
+    ctx.clearRect(0,0,w,h);
+    for(const p of nodes){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;}
+    for(let i=0;i<nodes.length;i++){
+      const a=nodes[i];
+      for(let j=i+1;j<nodes.length;j++){
+        const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy;
+        if(d2<LINK*LINK){const al=(1-Math.sqrt(d2)/LINK)*0.2;ctx.strokeStyle='rgba(230,0,18,'+al+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+      }
+      const dxm=a.x-mx,dym=a.y-my,dm2=dxm*dxm+dym*dym;
+      if(dm2<LINKM*LINKM){const al=(1-Math.sqrt(dm2)/LINKM)*0.55;ctx.strokeStyle='rgba(255,64,74,'+al+')';ctx.lineWidth=1.1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(mx,my);ctx.stroke();}
+    }
+    for(const p of nodes){ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba(230,0,18,0.72)';ctx.fill();}
+    raf=requestAnimationFrame(step);
+  }
+  if(!('ontouchstart' in window)){
+    addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;},{passive:true});
+    addEventListener('mouseout',()=>{mx=-9999;my=-9999;},{passive:true});
+  }
   size();
-  if(reduce){for(const p of parts)dot(p,p.a);}
-  else{raf=requestAnimationFrame(draw);document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else raf=requestAnimationFrame(draw);});}
+  if(reduce){step();cancelAnimationFrame(raf);}
+  else{raf=requestAnimationFrame(step);document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else raf=requestAnimationFrame(step);});}
   addEventListener('resize',size,{passive:true});
 })();
 </script>
