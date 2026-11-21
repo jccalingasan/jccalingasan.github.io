@@ -248,7 +248,7 @@
   .auto-shot a:hover{transform:translateY(-4px) rotate(-.5deg);border-color:var(--red);box-shadow:8px 8px 0 rgba(230,0,18,.35)}
   .auto-shot img{width:100%;height:auto;display:block}
   .auto-shot figcaption{font-size:14px;line-height:1.6;color:var(--ink-soft);margin-top:10px}
-  .auto-shot figcaption strong{color:var(--ink);font-weight:700}
+  .auto-shot figcaption strong{color:var(--ink);font-weight:700}.auto-gallery+.auto-gallery{margin-top:22px}.auto-gallery.two{grid-template-columns:1fr 1fr;max-width:none}@media(max-width:700px){.auto-gallery.two{grid-template-columns:1fr}}.proj-group{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:0 0 16px;display:flex;align-items:center;gap:8px}.proj-group .chev{color:var(--red)}.proj-list+.proj-group{margin-top:56px}.proj-group-sub{font-size:15px;color:var(--ink-soft);margin:-6px 0 18px}.proj-note{font-size:14px;color:var(--ink-mute);margin:-6px 0 16px}
   @media(max-width:640px){.proj-head{gap:14px}.proj-title{font-size:18px}.proj-body-pad{padding-left:16px}}
 
   /* ============ TOOLBOX ============ */
@@ -488,6 +488,7 @@
       <p class="sec-story">A few builds worth showing. Open any to see how it works.</p>
       <p class="sec-sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg> Click any project to expand the details.</p>
     </div>
+    <h3 class="proj-group"><span class="chev">›</span> Work &amp; studies</h3>
     <div class="proj-list">
 
       <article class="proj-item">
@@ -584,6 +585,25 @@
         </div></div></div>
       </article>
 
+    </div>
+    <h3 class="proj-group"><span class="chev">›</span> Free-time projects</h3>
+    <p class="proj-group-sub">Things I build for fun outside client work.</p>
+    <div class="proj-list">
+      <article class="proj-item">
+        <button class="proj-head" aria-expanded="false"><div class="proj-head-main"><h3 class="proj-title">BALIK-BAHAY — First-Person Psychological Horror Game</h3><p class="proj-tagline">A full story-driven horror game built in Godot 4, from first prototype to release build</p></div><span class="proj-toggle" aria-hidden="true"></span></button>
+        <div class="proj-body"><div class="proj-body-inner"><div class="proj-body-pad">
+          <p class="proj-fulldesc">My first game, released under the name Arsec Games. You go back to your childhood home for one document and relive what happened there: a Prologue, four chapters, a Finale and three endings, about an hour and a half of play. I directed the story, design and pacing, and took it from a movement prototype to a packaged Windows release in about three weeks.</p>
+          <a class="proj-github" href="https://cesleo.itch.io/balik-bahay" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Play on itch.io</a>
+          <ul class="proj-points"><li>Built in Godot 4 with GDScript: first-person controller, interaction system, checkpoints and saving, branching choices and three endings.</li><li>Designed a chase system that adjusts the pursuer's speed to the distance from the player, keeping chases tense but fair.</li><li>Diagnosed and fixed stutter on high-refresh laptop screens found during playtesting.</li><li>Kept it stable with 25 automated test suites that run the game headlessly.</li><li>Shipped Windows builds with a packaging script, encrypted game files, in-game bug reporting and a feedback form.</li></ul>
+          <div class="proj-tags"><span>Godot 4</span><span>GDScript</span><span>Game Design</span><span>Level Design</span><span>Automated Testing</span><span>Git</span></div>
+          <p class="proj-subhead">In the game</p>
+          <div class="auto-gallery"><figure class="auto-shot"><a href="balik-bahay-cover.jpg" target="_blank" rel="noopener"><img src="balik-bahay-cover.jpg" alt="BALIK-BAHAY cover art" loading="lazy" /></a><figcaption><strong>BALIK-BAHAY.</strong> Cover art for the release.</figcaption></figure></div>
+          <div class="auto-gallery two"><figure class="auto-shot"><a href="balik-bahay-dinner.jpg" target="_blank" rel="noopener"><img src="balik-bahay-dinner.jpg" alt="Family dinner scene in BALIK-BAHAY" loading="lazy" /></a><figcaption><strong>Dinner.</strong> The Prologue: a family meal where everyone watches Papa's mood.</figcaption></figure><figure class="auto-shot"><a href="balik-bahay-papa-sofa.jpg" target="_blank" rel="noopener"><img src="balik-bahay-papa-sofa.jpg" alt="Papa on the sofa in BALIK-BAHAY" loading="lazy" /></a><figcaption><strong>Papa.</strong> Characters are painted sprites placed in a 3D house.</figcaption></figure><figure class="auto-shot"><a href="balik-bahay-kite-memory.jpg" target="_blank" rel="noopener"><img src="balik-bahay-kite-memory.jpg" alt="Kite memory on the beach in BALIK-BAHAY" loading="lazy" /></a><figcaption><strong>A good memory.</strong> The kite day on the beach, a playable memory.</figcaption></figure><figure class="auto-shot"><a href="balik-bahay-dark-kitchen.jpg" target="_blank" rel="noopener"><img src="balik-bahay-dark-kitchen.jpg" alt="A dark room at night in BALIK-BAHAY" loading="lazy" /></a><figcaption><strong>Waking in the dark.</strong> Someone is talking quietly in the next room.</figcaption></figure><figure class="auto-shot"><a href="balik-bahay-hallway.jpg" target="_blank" rel="noopener"><img src="balik-bahay-hallway.jpg" alt="Hallway in BALIK-BAHAY" loading="lazy" /></a><figcaption><strong>The hallway.</strong> Light and sound lead the player through the house.</figcaption></figure><figure class="auto-shot"><a href="balik-bahay-worse-house.jpg" target="_blank" rel="noopener"><img src="balik-bahay-worse-house.jpg" alt="The warped house in BALIK-BAHAY" loading="lazy" /></a><figcaption><strong>The house changes.</strong> Each chapter the same rooms grow worse.</figcaption></figure></div>
+          <p class="proj-subhead">Under the hood</p>
+          <p class="proj-note">The source code is private. These excerpts are taken straight from the project.</p>
+          <div class="auto-gallery"><figure class="auto-shot"><a href="balik-bahay-code-chase.jpg" target="_blank" rel="noopener"><img src="balik-bahay-code-chase.jpg" alt="GDScript chase AI code" loading="lazy" /></a><figcaption><strong>Fair chase AI.</strong> The pursuer slows when it is right behind you and speeds up when it falls far back, so one mistake is frightening but not instantly fatal.</figcaption></figure><figure class="auto-shot"><a href="balik-bahay-code-pacing.jpg" target="_blank" rel="noopener"><img src="balik-bahay-code-pacing.jpg" alt="GDScript frame pacing fix" loading="lazy" /></a><figcaption><strong>Frame pacing fix.</strong> Playtesters on 144 Hz laptops saw stutter: V-Sync locked the game at 60 fps. The game now detects that and caps at the screen's own rate instead.</figcaption></figure><figure class="auto-shot"><a href="balik-bahay-code-puzzle.jpg" target="_blank" rel="noopener"><img src="balik-bahay-code-puzzle.jpg" alt="GDScript memory puzzle code" loading="lazy" /></a><figcaption><strong>Memory puzzle.</strong> The player rebuilds a night by choosing objects in the order things happened; a wrong pick glows softly instead of punishing.</figcaption></figure><figure class="auto-shot"><a href="balik-bahay-code-history.jpg" target="_blank" rel="noopener"><img src="balik-bahay-code-history.jpg" alt="Git history of the BALIK-BAHAY project" loading="lazy" /></a><figcaption><strong>Development history.</strong> 109 commits, from the first movement prototype to the release build.</figcaption></figure></div>
+        </div></div></div>
+      </article>
     </div>
   </div>
 </section>
